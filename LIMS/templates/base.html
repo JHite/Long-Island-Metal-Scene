@@ -1,0 +1,21 @@
+<head>
+    <title>{% block title %} Long Island Metal Scene{% endblock %}</title>
+</head>
+
+<body>
+    <div id="nav_bar">
+        {% block nav_bar %}
+        <table>
+            <tr>
+                <td><a href="/">Home</a>></td>
+                <td><a href="/">Events</a></td>
+
+            </tr>
+        </table>
+    </div>
+    
+    <div id="content">
+        {% block content %}{% endblock}
+    </div>
+</body>
+

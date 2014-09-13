@@ -1,3 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+ 
 {% if latest_story_list %}
     <ul>
     {% for story in latest_story_list %}
@@ -11,3 +15,4 @@
 {% else %}
     <p>No stories are available.</p>
 {% endif %}
+{% endblock %}
