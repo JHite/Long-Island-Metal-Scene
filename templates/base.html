@@ -14,7 +14,32 @@
         </table>
         {% endblock %}
     </div>
-    
+    <div id="login">
+        {% load account %}
+        {% if user.is_authenticated %}
+            {% if request.user.first_name or request.user.last_name  %}
+                <p>Logged in as {{request.user.first_name}} {{request.user.last_name}} </p>
+            {% else%}
+                <p>Logged in as {{request.user.username}}</p>
+        <!--    <a href="{% url "account_logout" %}">Logout</a> -->
+            {% endif %}
+            <a href="{% url "account_logout" %}">Logout</a>
+        {% else %} 
+            <form action="{% url "account_login" %}" method="post">
+                {% csrf_token %}
+                <input type=email" placeholder="E-mail Address" name="login">
+                <input type="password" placeholder"Password" name="password">
+                <label for="id_remember_menu">Remember Me:</label>
+                <input id="id_remember_menu" name="remember" type="checkbox" >
+                {% if redirect_field_value %}
+                    <input type="hidden " name="{{redirect_field_name}}" value="{{redirect_field_value}}" />
+                {% endif %}
+                <button type="submit">Login</button>
+                <a href="{% url 'account_reset_password' %}">Forgot Password </a>
+                <a href= "{% url 'account_signup' %}">Sign Up</a>
+            </form>
+        {% endif %}
+    </div>      
     <div id="content">
         {% block content %}{% endblock %}
     </div>

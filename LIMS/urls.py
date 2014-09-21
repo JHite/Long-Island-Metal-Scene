@@ -5,8 +5,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    url(r'', include('news.urls', namespace = "news")),
     url(r'^news/', include('news.urls', namespace = "news")),
     url(r'^admin/', include(admin.site.urls)),
     
-    #url(r'^accounts/', include('registration.backends.default.urls')),
+    url(r'^accounts/', include('allauth.urls')),    
 )
